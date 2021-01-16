@@ -58,7 +58,7 @@ app.post('/api/change-password', async (req, res) => {
 })
 
 app.post('/api/login', async (req, res) => {
-	try{
+	
 		const { username, password } = req.body
 	const user = await User.findOne({ username }).lean()
 
@@ -80,11 +80,11 @@ app.post('/api/login', async (req, res) => {
 		return res.json({ status: 'ok', data: token })
 		
 	}
-}
-catch(error){
+
+
 	res.json({ status: 'error', error: 'Invalid username/password' })
 	throw error
-}})
+})
 
 app.post('/api/register', async (req, res) => {
 	const { username, password: plainTextPassword } = req.body
